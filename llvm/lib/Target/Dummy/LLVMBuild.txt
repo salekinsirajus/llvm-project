@@ -1,0 +1,10 @@
+[common]
+subdirectories = TargetInfo
+
+[component_0]
+type = TargetGroup
+name = Dummy
+parent = Target
+has_asmprinter = 1
+
+add_to_library_groups = Dummy
