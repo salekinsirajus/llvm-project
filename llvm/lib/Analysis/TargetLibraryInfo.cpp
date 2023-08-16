@@ -562,8 +562,12 @@ static void initialize(TargetLibraryInfoImpl &TLI, const Triple &T,
     // or we have a reasonable detection strategy, we cannot use exp10 reliably
     // on Linux.
     //
-    // Fall through to disable all of them.
-    [[fallthrough]];
+    // Update: it's been a minute and current glibc version is 2.38. At this
+    // it is safe to use these functions
+    TLI.setAvailable(LibFunc_exp10);
+    TLI.setAvailable(LibFunc_exp10f);
+    TLI.setAvailable(LibFunc_exp10l);
+	break;
   default:
     TLI.setUnavailable(LibFunc_exp10);
     TLI.setUnavailable(LibFunc_exp10f);
